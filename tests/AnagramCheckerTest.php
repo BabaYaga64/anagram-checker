@@ -9,12 +9,13 @@
             //Arrange
             $test_AnagramChecker = new AnagramChecker;
             $input = "bread";
+            $input2 = array('bread');
 
             //Act
-            $result = $test_AnagramChecker->makeAnagramChecker($input);
+            $result = $test_AnagramChecker->makeAnagramChecker($input, $input2);
 
             //Assert
-            $this->assertEquals("beard", $result);
+            $this->assertEquals(array('bread'), $result);
         }
 
     }
