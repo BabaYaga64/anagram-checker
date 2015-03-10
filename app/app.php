@@ -15,12 +15,10 @@
 
     });
 
-    $app->get("/compare_results", function() use($app) {
+    $app->get("/compare_results", function() use ($app) {
         $my_AnagramChecker = new AnagramChecker;
-        $compared_words = $my_AnagramChecker->makeAnagramChecker($_GET['compare_array']);
-        return $app['twig']->render('compare_results.twig');
-
-
+        $compared_words = $my_AnagramChecker->makeAnagramChecker($_GET['keyword'], $_GET['compare']);
+        return $app['twig']->render('compare_results.twig', array('compare_array' => $compared_words));
     });
 
     return $app;

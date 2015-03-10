@@ -4,19 +4,33 @@
     class AnagramCheckerTest extends PHPUnit_Framework_TestCase
     {
 
-        function test_makeAnagramChecker() //CORRECT TITLE??
+        function test_makeAnagramChecker()
         {
             //Arrange
             $test_AnagramChecker = new AnagramChecker;
-            $input = "bread";
-            $input2 = array('bread');
+            $input = "a";
+            $input2 = array('a');
 
             //Act
             $result = $test_AnagramChecker->makeAnagramChecker($input, $input2);
 
             //Assert
-            $this->assertEquals(array('bread'), $result);
+            $this->assertEquals(array('a'), $result);
         }
 
+        function test_makeAnagramChecker_False()
+        {
+            //Arrange
+            $test_AnagramChecker = new AnagramChecker;
+            $input = "a";
+            $input2 = array('b');
+
+            //Act
+            $result = $test_AnagramChecker->makeAnagramChecker($input, $input2);
+
+            //Assert
+            $this->assertEquals(array('b'), $result);
+        }
     }
+
 ?>
