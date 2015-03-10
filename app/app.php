@@ -4,21 +4,24 @@
 
     $app = new Silex\Application();
 
-    $app['debug'] = true;
+    //$app['debug'] = true;
 
     $app->register(new Silex\Provider\TwigServiceProvider(), array(
-        'twig.path' => __DIR__. '/../views'
+        'twig.path' => __DIR__.'/../views'
     ));
 
     $app->get("/", function() use ($app) {
-        return $app['twig']->render/('form.twig');
+        return $app['twig']->render('form.twig');
 
     });
 
-    // $app->get("/vie", function() use($app) {
-    //     $my_AnagramChecker = new AnagramChecker;
-    //     $
-    //
-    // });
+    $app->get("/compare_results", function() use($app) {
+        $my_AnagramChecker = new AnagramChecker;
+        $compared_words = $my_AnagramChecker->makeAnagramChecker($_GET['compare_array']);
+        return $app['twig']->render('compare_results.twig');
 
+
+    });
+
+    return $app;
 ?>
